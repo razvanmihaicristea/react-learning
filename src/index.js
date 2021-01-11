@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function Square(props) {
+const Square = (props) => {
     return (
         <button
             className="square"
@@ -14,37 +14,35 @@ function Square(props) {
     );
 }
 
-class Board extends React.Component {
+const Board = (props) => {
 
-    renderSquare(i, color) {
+    function renderSquare(i, color) {
         return <Square
-            value={this.props.squares[i]}
+            value={props.squares[i]}
             background={color}
-            onClick={() => this.props.onClick(i)}
+            onClick={() => props.onClick(i)}
         />;
     }
 
-    render() {
-        return (
-            <div>
-                <div className="board-row">
-                    {this.renderSquare(0, '#f0c')}
-                    {this.renderSquare(1, '#fc0')}
-                    {this.renderSquare(2, '#f0c')}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3, '#fc0')}
-                    {this.renderSquare(4, '#f0c')}
-                    {this.renderSquare(5, '#fc0')}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6, '#f0c')}
-                    {this.renderSquare(7, '#fc0')}
-                    {this.renderSquare(8, '#f0c')}
-                </div>
+    return (
+        <div>
+            <div className="board-row">
+                {renderSquare(0, '#f0c')}
+                {renderSquare(1, '#fc0')}
+                {renderSquare(2, '#f0c')}
             </div>
-        );
-    }
+            <div className="board-row">
+                {renderSquare(3, '#fc0')}
+                {renderSquare(4, '#f0c')}
+                {renderSquare(5, '#fc0')}
+            </div>
+            <div className="board-row">
+                {renderSquare(6, '#f0c')}
+                {renderSquare(7, '#fc0')}
+                {renderSquare(8, '#f0c')}
+            </div>
+        </div>
+    );
 }
 
 class Game extends React.Component {
